@@ -1,0 +1,103 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  position: relative;
+}
+
+.circle{
+  background: pink;
+  height: 100%;
+  width:100%;
+  border-radius: 50%;
+  position: absolute;
+  top:0;
+  left: 0;
+  z-index: -1;
+
+}
+
+.gradient-circle{
+  background: linear-gradient(to right,#2092f5,#f52020);
+  height: 320px;
+  width: 320px;
+  z-index: -3;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  filter:blur(5px);
+  animation: rotate 1s linear infinite forwards;
+}
+
+@keyframes rotate{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+span{
+  display: block;
+  position: absolute;
+  background: orange;
+  opacity: 0.9;
+  width: 320px;
+  height: 320px;
+  z-index: -2;
+  animation: rotater 0.2s linear infinite forwards;
+  border-radius: 50%;
+  filter: blur(30px);
+}
+@keyframes rotater{
+  from{
+    transform: rotate(-0deg);
+  }
+  to{
+    transform: rotate(-360deg);
+  }
+}
+
+.container.grow{
+  animation: grow 2s linear forwards;
+}
+
+@keyframes grow{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.2);
+  }
+}
+
+.container.shrink{
+  animation: shrink 2s linear forwards;
+}
+
+@keyframes shrink{
+  from{
+    transform:scale(1.2);
+  }
+  to{
+   transform: scale(1);
+  }
+}
