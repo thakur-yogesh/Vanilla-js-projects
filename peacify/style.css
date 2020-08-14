@@ -25,6 +25,32 @@ body{
   position: relative;
 }
 
+.pointer-container{
+  position: absolute;
+  height: 30px;
+  width: 115%;
+  animation: rotate-pointer 7s infinite linear forwards;
+}
+
+@keyframes rotate-pointer{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.pointer{
+  position: absolute;
+  top: -10px;
+  left: -16px;
+  height: 20px;
+  width: 20px;
+  background-color: #777;
+  border-radius: 50%;
+}
+
 .circle{
   background: linear-gradient(to right, rgb(67, 126, 125), rgb(0, 62, 123));
   height: 100%;
@@ -104,4 +130,8 @@ span{
   to{
    transform: scale(1);
   }
+}
+
+audio{
+  margin-top: 100px;
 }
