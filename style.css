@@ -64,7 +64,8 @@ h1{
 footer{
   margin-top: 10px;
   text-align: center;
-  background-attachment: fixed;
+  margin-bottom: 0px;
+
 }
 
 .main div{
