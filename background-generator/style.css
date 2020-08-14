@@ -1,0 +1,22 @@
+body{
+  text-align: center;
+  background: linear-gradient(to right,#2092f5,#f52020)
+}
+
+h1{
+  display: flex;
+  align-items: flex-start;
+  transition: all 1s;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  width: 55%;
+  cursor: pointer;
+}
+
+h1:hover{
+  transform: scale(0.7);
+  box-shadow: 3px 3px 3px;
+}
+input{
+  cursor: pointer;
+}

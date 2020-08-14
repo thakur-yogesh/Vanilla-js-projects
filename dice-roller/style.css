@@ -1,0 +1,94 @@
+*{
+  margin:0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Lato",sans-serif;
+	font-weight: 1000;
+	font-size:16px;
+	line-height: 1.7;
+	color:#777;
+	padding: 30px;
+}
+
+.container{
+  background-image: linear-gradient(to right bottom,rgba(223,232,151,0.8),rgba(242,166,143,0.8))
+  ,url("https://www.hdwallpaper.nu/wp-content/uploads/2016/12/dice-13.jpg");
+  height: 95vh;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.heading{
+  position: absolute;
+  display: block;
+  text-transform: uppercase;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-radius: 5px;
+  padding-right:5px;
+  box-shadow: 2px 3px 3px;
+  transition: all 0.3s;
+}
+
+.heading:hover{
+   transform: scale(0.8);
+}
+
+
+.dice-container{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-40%);
+  text-align: center;
+}
+img{
+  border-radius: 20px;
+  display: block;
+  margin-bottom: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+
+}
+img:hover{
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+.btn{
+  display: inline-block;
+  border:1px solid;
+  border-radius: 5px;
+  padding: 5px 20px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn:hover{
+   transform: scale(1.1);
+}
+.btn:active{
+  transform: scale(0.9);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+.ani{
+  animation-name: setopacity;
+  animation-duration: 0.1s;
+
+}
+@keyframes setopacity {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.4;
+    transform: scale(0.09);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
