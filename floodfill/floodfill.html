@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flood Fill Visualizer</title>
+  <style>
+    body {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      font-family: sans-serif;
+    }
+    canvas {
+      border: 2px solid white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const rows = 20;
+    const cols = 20;
+    const cellSize = canvas.width / cols;
+
+    let grid = [];
+    for(let i = 0;i<20;i++)
+    {
+        let row = []
+        for(j = 0;j<20;j++)
+        {
+            row.push((Math.random() < 0.2 ? 1 : 0))
+        }
+        grid.push(row)
+    }
+
+    function drawGrid() {
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          if (grid[i][j] === 0) ctx.fillStyle = "#333";
+          if (grid[i][j] === 1) ctx.fillStyle = "#888"; // wall
+          if (grid[i][j] === 2) ctx.fillStyle = "#00ccff"; // filled
+          ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+          ctx.strokeStyle = "#111";
+          ctx.strokeRect(j * cellSize, i * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+
+    async function floodFill(x, y) {
+      const stack = [[x, y]];
+      const visited = new Set();
+
+      const key = (x, y) => `${x},${y}`;
+
+      while (stack.length) {
+        const [cx, cy] = stack.pop();
+
+        if (
+          cx < 0 || cy < 0 || cx >= cols || cy >= rows ||
+          grid[cy][cx] !== 0 || visited.has(key(cx, cy))
+        ) continue;
+
+        grid[cy][cx] = 2;
+        visited.add(key(cx, cy));
+        drawGrid();
+
+        await new Promise(res => setTimeout(res, 30)); // animation delay
+
+        stack.push([cx + 1, cy]);
+        stack.push([cx - 1, cy]);
+        stack.push([cx, cy + 1]);
+        stack.push([cx, cy - 1]);
+      }
+    }
+
+    canvas.addEventListener("click", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left) / cellSize);
+      const y = Math.floor((e.clientY - rect.top) / cellSize);
+      if (grid[y][x] === 0) {
+        floodFill(x, y);
+      }
+    });
+
+    drawGrid();
+  </script>
+</body>
+</html>
